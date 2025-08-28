@@ -97,7 +97,7 @@ class CarListView(LoginRequiredMixin, generic.ListView):
         form = CarModelSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(
+            return queryset.filter(
                 model__icontains=form.cleaned_data["model"]
             )
         return queryset
@@ -145,7 +145,7 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
         form = DriverUsernameSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(
+            return queryset.filter(
                 username__icontains=form.cleaned_data["username"]
             )
         return queryset
