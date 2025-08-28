@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from taxi.models import Manufacturer, Driver,Car
+from taxi.models import Manufacturer, Car
 
 
 class ModelsTests(TestCase):
@@ -14,7 +14,7 @@ class ModelsTests(TestCase):
             str(manufacturer),
             f"{manufacturer.name}"
             f" {manufacturer.country}"
-                         )
+        )
 
     def test_car_str(self):
         manufacturer = Manufacturer.objects.create(
