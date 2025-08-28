@@ -49,9 +49,10 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
         context["search_form"] = ManufacturerNameSearchForm(
             initial={"name": name}
         )
+        return context
 
     def get_queryset(self):
-        queryset = Manufacturer.objects.select_related("name")
+        queryset = Manufacturer.objects.all()
         form = ManufacturerNameSearchForm(self.request.GET)
 
         if form.is_valid():
@@ -140,7 +141,7 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Driver.objects.select_related("license_number")
+        queryset = Driver.objects.all()
         form = DriverUsernameSearchForm(self.request.GET)
 
         if form.is_valid():
